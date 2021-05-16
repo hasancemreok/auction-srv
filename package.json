@@ -11,5 +11,9 @@
     "url": "auction-srv"
   },
   "author": "hasancemreok",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.12.9"
+  }
 }

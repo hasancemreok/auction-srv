@@ -9,7 +9,7 @@ exports.findAll = (req, res) => {
 exports.findOne = (req, res) => {
   Item.findById(req.params.itemId)
   .then(item => {
-    if(!note) return res.status(404).send({message: "Item not found with id " + req.params.itemId});
+    if(!item) return res.status(404).send({message: "Item not found with id " + req.params.itemId});
     res.send(item);
   })
 }
