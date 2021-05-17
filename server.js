@@ -1,10 +1,12 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-const port = 3001;
+app.use(cors());
+const port = 3001 || process.env.PORT;
 
 // db
 const dbUrl = "mongodb://localhost:27017/auctionapp";
