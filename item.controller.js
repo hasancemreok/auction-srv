@@ -1,7 +1,25 @@
 const Item = require('./item.model.js');
 
 exports.findAll = (req, res) => {
-  Item.find()
+  const query = req.body;
+  const orderType = query.sortType == '0' ? 'asc' : 'desc';
+
+  let order = {};
+  if(query.sortBy == '0')
+    order = { '_id' : orderType }
+  else if(query.sortBy == '1')
+    order = { 'lastBid' : orderType }
+  else if(query.sortBy == '2')
+    order = { 'startPrice': orderType }
+  else order = {}
+
+  Item.find({
+    $or: [
+      { caption: { '$regex': query.search }},
+      { description: { '$regex': query.search }}
+    ]})
+  .sort(order)
+  .limit(10)
   .then(items => res.send(items))
   .catch(error => res.status(500).send(error.message || "An error occurred"));
 }

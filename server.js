@@ -19,10 +19,17 @@ mongoose.connect(dbUrl, { useNewUrlParser: true})
   process.exit();
 })
 
-// routes
+// routes for items
 const items = require('./item.controller.js');
-app.get('/items', items.findAll);
-app.get('/items/:itemId', items.findOne);
+app.post('/items', items.findAll);
+app.post('/items/:itemId', items.findOne);
+
+// routes for items
+const bids = require('./bid.controller.js');
+app.post('/items/:itemId/bids', bids.findForItem);
+app.post('/users/:userId/bids', bids.findForUser);
+app.post('/bids', bids.create);
+
 
 app.listen(port, () => {
   console.log('rest server running...');
