@@ -6,7 +6,7 @@ const ItemSchema = mongoose.Schema({
   auctionEndDate: Date,
   lastBid: Number,
   startPrice: Number,
-  pricePerBid: Number
+  pricePerBid: Number,
 }, { timestamps: true });
 
 module.exports = mongoose.model('Item', ItemSchema);

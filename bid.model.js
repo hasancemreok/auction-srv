@@ -6,6 +6,7 @@ const BidSchema = mongoose.Schema({
   price: Number,
   bidTime: Date,
   isAutoBid: Boolean,
+  item: {type: mongoose.Schema.Types.ObjectId, ref: "Item"}
 }, { timestamps: true });
 
 module.exports = mongoose.model('Bid', BidSchema);

@@ -30,7 +30,6 @@ app.post('/items/:itemId/bids', bids.findForItem);
 app.post('/users/:userId/bids', bids.findForUser);
 app.post('/bids', bids.create);
 
-
 app.listen(port, () => {
   console.log('rest server running...');
 });
